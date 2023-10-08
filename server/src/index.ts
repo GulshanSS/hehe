@@ -1,12 +1,28 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
-import config from "./config";
-
 dotenv.config();
+
+import config from "./config";
+import authRoutes from "./routes/auth.route";
+import passport from "passport";
+import session from "express-session";
 
 const app = express();
 
 const PORT = config.PORT || 5000;
+
+app.use(express.json());
+
+app.use(
+  session({
+    secret: config.EXPRESS_SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/test", (_: Request, res: Response) => {
   return res.json({
@@ -14,6 +30,8 @@ app.get("/test", (_: Request, res: Response) => {
     message: "Test Route",
   });
 });
+
+app.use(authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
