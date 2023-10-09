@@ -6,6 +6,7 @@ import config from "./config";
 import authRoutes from "./routes/auth.route";
 import passport from "passport";
 import session from "express-session";
+import errorMiddlerware from "./middlewares/error.middleware";
 
 const app = express();
 
@@ -31,7 +32,9 @@ app.get("/test", (_: Request, res: Response) => {
   });
 });
 
-app.use(authRoutes);
+app.use("/api/v1/auth", authRoutes);
+
+app.use(errorMiddlerware);
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
