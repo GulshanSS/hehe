@@ -26,7 +26,7 @@ passport.use(
     {
       clientID: config.GOOGLE_OAUTH_CLIENT_ID,
       clientSecret: config.GOOGLE_OAUTH_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: "/api/v1/auth/google/callback",
     },
     async (_, __, profile, done) => {
       const existingUser = await getUserByEmail(profile._json.email!);

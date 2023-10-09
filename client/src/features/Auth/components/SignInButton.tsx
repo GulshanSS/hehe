@@ -13,7 +13,7 @@ const SignInButton = ({ icon, variant, text }: Props) => {
   };
 
   return (
-    <Link to={`http://localhost:5000/auth/google`}>
+    <Link to={`http://localhost:5000/api/v1/auth/google`}>
       <button
         type="button"
         className={`${buttonBackgoundColor[variant]} px-3.5 py-2.5 font-bold rounded-lg text-white flex items-center gap-2`}

@@ -1,12 +1,12 @@
 import { Router, Request, Response } from "express";
 import passport from "passport";
 import { handleSocialLogins } from "../controllers/auth.controller";
-import "../passport/index";
+import "../passport";
 
 const router = Router();
 
 router.get(
-  "/auth/google",
+  "/google",
   passport.authenticate("google", { scope: ["profile", "email"] }),
   (_: Request, res: Response) => {
     res.send("Redirecting to google....");
@@ -14,7 +14,7 @@ router.get(
 );
 
 router.get(
-  "/auth/google/callback",
+  "/google/callback",
   passport.authenticate("google"),
   handleSocialLogins
 );
