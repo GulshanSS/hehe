@@ -2,16 +2,19 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
-import config from "./config";
-import authRoutes from "./routes/auth.route";
 import passport from "passport";
 import session from "express-session";
+import morgan from "morgan";
+
+import config from "./config";
+import authRoutes from "./routes/auth.route";
 import errorMiddlerware from "./middlewares/error.middleware";
 
 const app = express();
 
 const PORT = config.PORT || 5000;
 
+app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(
