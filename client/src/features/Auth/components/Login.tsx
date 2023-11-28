@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className="w-screen h-screen flex flex-col gap-20 justify-center items-center">
       <div className="flex flex-col items-center gap-2">
-        <span className="text-slate-500 font-extrabold text-8xl lowercase">
+        <span className="text-slate-500 font-extrabold text-6xl md:text-8xl lowercase">
           Welcome to
         </span>
         <Logo />
@@ -17,11 +17,6 @@ const Login = () => {
           icon={<Chrome />}
           variant="red"
           text="Sign In with Google"
-        />
-        <SignInButton
-          icon={<Github />}
-          variant="slate"
-          text="Sign In with GitHub"
         />
       </div>
     </div>
